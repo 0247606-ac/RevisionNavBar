@@ -110,4 +110,29 @@ html {
 
     animation: fadeInUp 1s ease;
 }
+.project-card {
+    cursor: pointer;
+    min-height: 350px;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.8),
+        rgba(0,0,0,0.15)
+    );
+}
+
+.project-card > div {
+    position: relative;
+    z-index: 1;
+}
 
