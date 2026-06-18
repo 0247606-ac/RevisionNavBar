@@ -1,79 +1,103 @@
-// ==========================
-// BOTÓN DE CONTACTO
-// ==========================
+let botonContacto = document.getElementById("btnContacto");
+let parrafoContacto = document.getElementById("contacto");
 
-const botonContacto =
-    document.getElementById("btnContacto");
+let mostrando = false;
 
-const contacto =
-    document.getElementById("contacto");
-
-let visible = false;
-
-botonContacto.addEventListener("click", () => {
-
-    if (!visible) {
-
-        contacto.innerHTML =
-            "📱 WhatsApp: 722 980 9151";
-
-        botonContacto.innerHTML =
-            "Ocultar contacto";
-
-        visible = true;
-
-    } else {
-
-        contacto.innerHTML = "";
-
-        botonContacto.innerHTML =
-            "Mostrar contacto";
-
-        visible = false;
+botonContacto.onclick = function ()
+{
+    if (mostrando == false)
+    {
+        parrafoContacto.innerHTML = '<span class="contact-line"><span><i class="bi bi-envelope-fill"></i><a href="mailto:anacristina.rdzc@gmail.com">anacristina.rdzc@gmail.com</a></span><span><i class="bi bi-telephone-fill"></i><a href="tel:+527229809151">722 980 9151</a></span></span>';
+        botonContacto.innerHTML = '<i class="bi bi-x-lg me-1"></i> Ocultar contacto';
+        mostrando = true;
     }
+    else
+    {
+        parrafoContacto.innerHTML = "";
+        botonContacto.innerHTML = '<i class="bi bi-envelope me-1"></i> Mostrar contacto';
+        mostrando = false;
+    }
+};
 
-});
+let cajas = document.querySelectorAll(".reveal");
 
+function revisarCajas()
+{
+    for (let i = 0; i < cajas.length; i++)
+    {
+        let posicion = cajas[i].getBoundingClientRect();
+        if (posicion.top < window.innerHeight - 80)
+        {
+            cajas[i].classList.add("is-visible");
+        }
+    }
+}
 
-// ==========================
-// NAVBAR
-// ==========================
+window.addEventListener("scroll", revisarCajas);
+window.addEventListener("load", revisarCajas);
 
-const navbarCollapse =
-    document.getElementById("navbarCV");
+let enlaces = document.querySelectorAll(".navbar .nav-link");
 
-const navLinks =
-    document.querySelectorAll(".nav-link");
+function marcarActivo()
+{
+    for (let i = 0; i < enlaces.length; i++)
+    {
+        let destino = enlaces[i].getAttribute("href");
+        let seccion = document.querySelector(destino);
 
-navLinks.forEach(link => {
+        if (seccion)
+        {
+            let pos = seccion.getBoundingClientRect();
+            if (pos.top <= 150 && pos.bottom >= 150)
+            {
+                for (let j = 0; j < enlaces.length; j++)
+                {
+                    enlaces[j].classList.remove("active");
+                }
+                enlaces[i].classList.add("active");
+            }
+        }
+    }
+}
 
-    link.addEventListener("click", () => {
+window.addEventListener("scroll", marcarActivo);
+window.addEventListener("resize", marcarActivo);
+window.addEventListener("resize", revisarCajas);
 
-        // Espera a que termine el scroll
-        setTimeout(() => {
+let barra = document.querySelector(".navbar");
 
-            // Solo si está abierta (móvil)
-            if (
-                navbarCollapse.classList.contains("show")
-            ) {
+for (let i = 0; i < enlaces.length; i++)
+{
+    enlaces[i].onclick = function (evento)
+    {
+        let destino = enlaces[i].getAttribute("href");
+        let seccion = document.querySelector(destino);
 
-                const bsCollapse =
-                    new bootstrap.Collapse(
-                        navbarCollapse,
-                        {
-                            toggle: false
-                        }
-                    );
+        if (seccion)
+        {
+            evento.preventDefault();
 
-                bsCollapse.hide();
-
+            for (let j = 0; j < enlaces.length; j++)
+            {
+                enlaces[j].classList.remove("active");
             }
 
-        }, 350);
+            enlaces[i].classList.add("active");
 
-    });
+            let altoBarra = barra.offsetHeight;
+            let posicion = seccion.getBoundingClientRect().top + window.pageYOffset - altoBarra - 20;
 
-});
+            window.scrollTo({ top: posicion, behavior: "smooth" });
+
+            let menu = document.getElementById("navbarCV");
+
+            if (menu.classList.contains("show"))
+            {
+                menu.classList.remove("show");
+            }
+        }
+    };
+}
 
 
 
