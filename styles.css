@@ -1,3 +1,7 @@
+/* ==========================
+   GENERAL
+========================== */
+
 body {
     font-family: "DM Sans", sans-serif;
     background-color: #f5f7fa;
@@ -11,6 +15,10 @@ html {
 [id] {
     scroll-margin-top: 120px;
 }
+
+/* ==========================
+   HEADER
+========================== */
 
 .hero-section {
     background: linear-gradient(135deg, #1e3a8a, #2563eb);
@@ -27,11 +35,23 @@ html {
     border: 5px solid white;
 }
 
+/* ==========================
+   TITULOS Y SECCIONES
+========================== */
+
 .section-title {
     color: #1e3a8a;
     font-weight: 700;
     margin-bottom: 15px;
 }
+
+ul {
+    padding-left: 20px;
+}
+
+/* ==========================
+   CARDS GENERALES
+========================== */
 
 .card {
     border: none;
@@ -43,9 +63,33 @@ html {
     transform: translateY(-5px);
 }
 
-ul {
-    padding-left: 20px;
+/* ==========================
+   NAVBAR
+========================== */
+
+.nav-link:hover {
+    color: #60a5fa !important;
+    transition: 0.3s;
 }
+
+/* ==========================
+   BOTONES
+========================== */
+
+.btn-primary:hover {
+    background-color: #5577d7;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+#contacto {
+    font-weight: 600;
+    color: white;
+}
+
+/* ==========================
+   FOOTER
+========================== */
 
 footer {
     background-color: white;
@@ -57,24 +101,12 @@ footer a {
     font-weight: 600;
 }
 
-#contacto {
-    font-weight: 600;
-    color: #ffffff;
-}
+/* ==========================
+   ANIMACION
+========================== */
 
-.nav-link:hover {
-    color: #60a5fa !important;
-    transition: 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #5577d7;
-    transform: scale(1.05);
-    transition: 0.3s;
-}
-
-/* Animación */
 @keyframes fadeInUp {
+
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -84,16 +116,38 @@ footer a {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
-/* Cards de proyectos */
+/* ==========================
+   SOFTWARE
+========================== */
+
+.bi {
+    transition: transform 0.3s ease;
+}
+
+.col:hover .bi {
+    transform: scale(1.2);
+}
+
+/* ==========================
+   PROYECTOS DESTACADOS
+========================== */
+
 .project-card {
     position: relative;
+    height: 350px;
+    min-height: 350px;
+
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
     cursor: pointer;
-    min-height: 350px;
-    transition: all 0.3s ease;
+
+    transition: transform 0.3s ease;
 }
 
 .project-card:hover {
@@ -102,39 +156,81 @@ footer a {
 
 .project-card::before {
     content: "";
+
     position: absolute;
     inset: 0;
+
     background: linear-gradient(
         to top,
-        rgba(0,0,0,0.8),
-        rgba(0,0,0,0.15)
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.20)
     );
+
+    z-index: 0;
 }
 
-.project-card > div {
-    position: relative;
-    z-index: 1;
+/* Titulo del proyecto */
+
+.project-title {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+
+    z-index: 2;
+
+    color: white;
+    font-weight: 700;
+
+    max-width: 75%;
 }
 
-/* Imágenes de proyectos */
+/* Tags de habilidades */
+
+.project-tags {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+
+    z-index: 2;
+
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.project-tags .badge {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+}
+
+/* ==========================
+   IMAGENES DE PROYECTOS
+========================== */
+
 .sat-card {
-    background-image: url('./Images/sat.jpg');
+    background-image: url("./Images/sat.png");
 }
 
 .hololink-card {
-    background-image: url('./Images/hololink.jpg');
+    background-image: url("./Images/hololink.png");
 }
 
 .pods-card {
-    background-image: url('./Images/pods.jpg');
+    background-image: url("./Images/pods.png");
 }
 
 .cnc-card {
-    background-image: url('./Images/cnc.jpg');
+    background-image: url("./Images/cnc.png");
 }
 
-/* Responsive */
+/* ==========================
+   RESPONSIVE
+========================== */
+
 @media (max-width: 768px) {
+
     .profile-image {
         width: 140px;
         height: 140px;
@@ -143,4 +239,15 @@ footer a {
     .hero-section {
         padding: 80px 15px 50px;
     }
+
+    .project-card {
+        height: 280px;
+        min-height: 280px;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+        max-width: 85%;
+    }
+
 }
