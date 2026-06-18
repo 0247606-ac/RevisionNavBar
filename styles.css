@@ -135,4 +135,27 @@ html {
     position: relative;
     z-index: 1;
 }
+.sat-card {
+    background-image: url('./Images/sat.jpg');
+}
+
+.hololink-card {
+    background-image: url('./Images/hololink.jpg');
+}
+
+.pods-card {
+    background-image: url('./Images/pods.jpg');
+}
+
+.cnc-card {
+    background-image: url('./Images/cnc.jpg');
+}
+
+.project-card {
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    min-height: 350px;
+    transition: all 0.3s ease;
+}
 
