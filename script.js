@@ -14,7 +14,7 @@ botonContacto.onclick = function ()
     else
     {
         parrafoContacto.innerHTML = "";
-        botonContacto.innerHTML = '<i class="bi bi-envelope me-1"></i> Mostrar contacto';
+        botonContacto.innerHTML = '<i class="bi bi-envelope me-1"></i> Contáctame';
         mostrando = false;
     }
 };
